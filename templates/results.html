@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    ShopBuddy | Results
+{% endblock title %}
+
+
+{% block body %}
+    <div class="container m-5">
+        <div class="d-flex justify-content-center mb-5">
+            <div class="display-6 ">Search results</div>
+        </div>
+        
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{url_for('index')}}" style="text-decoration: none;">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Search Results</li>
+            </ol>
+          </nav>
+        {% if res %}
+        {% for r in res %}
+            <div class="d-flex justify-content-evenly border-bottom py-4">
+                <div class="img col-2">
+                    <img src="{{r.item.img_url}}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="info col-6">
+                    <div class="h4">{{r.item.title}}</div>
+                    <div class="title">{{r.item.price}}</div>
+                    <div class="title">{{r.delivery.shipping}}</div>
+                    <div class="title">{{r.delivery.location}}</div>
+                </div>
+                <div class="controls col-1">
+                    <div class="row mb-2">
+                        <a href="{{r.item.link}}" target="_blank" class="btn btn-primary">Buy</a>
+                    </div>
+                    <div class="row">
+                        <!-- <button class="btn btn-outline-primary">Save</button> -->
+                    </div>
+                </div>
+            </div>
+        {% endfor  %}
+        {% endif  %}
+
+    </div> 
+
+{% endblock body %}
+

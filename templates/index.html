@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    ShopBuddy
+{% endblock title %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="form d-flex justify-content-center align-items-center" style="height: 600px;">
+            <div class="">
+                <h3 class="">ShopBuddy</h3>
+                <form class="" action="/search/results/" method="POST" name="q">
+                    <div class="col-md-12 d-flex">
+                        <input type="text" class="form-control" name="_data" id="inputtext">
+                        <input type="submit" class="btn btn-primary mx-2" value="Q">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+{% endblock body %}
+
