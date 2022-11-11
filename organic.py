@@ -12,10 +12,10 @@ headers = {
 
 list_price = []
 
-def get_organic_results(string):
+def get_on_ebay(string):
     html = requests.get(f'https://www.ebay.com/sch/i.html?_nkw={string}', headers=headers).text
     soup = BeautifulSoup(html, 'lxml')
-
+    print(html)
     data = []
 
     for item in soup.select('.s-item__wrapper.clearfix'):
@@ -101,5 +101,23 @@ def get_organic_results(string):
   
 
     # sorting algorithm here
+    data.sort(key=lambda x: x["digit_price"])
+    return  data[1:] 
+
+
+
+def get_alibaba(string):
+    url = 'https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText='
+    html = requests.get(url+string, headers=headers).text
+    soup = BeautifulSoup(html, 'lxml')
+
+    data = []
     
-    return  data[1:] #{k: v for k, v in sorted(x.items(), key=lambda item: item[0])}
+    for item in soup.select('.s-item__wrapper.clearfix'):
+        title = item.select_one('.elements-title-normal__content large  ').text
+ 
+        try:
+            price = item.select_one('.elements-offer-price-normal__promotion').text.split(' ')[0]
+        except:
+            reviews = None
+   

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
 from organic import *
+from test import get_amasample
 
 app = Flask(__name__)
 
@@ -12,9 +13,12 @@ def post():
     if request.method == 'POST':
         data = request.form['_data']
         if data:
-            res = get_organic_results(data)
-            print(res)
+            if request.form.getlist('ebay'):
+                res = get_on_ebay(data)
+            elif request.form.getlist('amasample'):
+                res = get_amasample(data)
             return render_template('results.html',res=res)
+        
     return render_template('results.html')
 
 
