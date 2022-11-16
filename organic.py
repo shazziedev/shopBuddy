@@ -83,13 +83,10 @@ def get_on_ebay(string):
 
         data.append({
             'digit_price':digit_price,
-            'item': {
-                'title': title, 
-                'link': link, 
-                'price': price,
-                'img_url':img_url,
-                
-            },
+            'title': title, 
+            'link': link, 
+            'price': price,
+            'img_url':img_url,
             'condition': condition,
             'top_rated': top_rated,
             'reviews': reviews,
@@ -98,26 +95,8 @@ def get_on_ebay(string):
             'delivery': {'shipping': shipping, 'location': location},
             'bids': {'count': bid_count, 'time_left': bid_time_left},
         })
-  
-
     # sorting algorithm here
     data.sort(key=lambda x: x["digit_price"])
     return  data[1:] 
 
 
-
-def get_alibaba(string):
-    url = 'https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText='
-    html = requests.get(url+string, headers=headers).text
-    soup = BeautifulSoup(html, 'lxml')
-
-    data = []
-    
-    for item in soup.select('.s-item__wrapper.clearfix'):
-        title = item.select_one('.elements-title-normal__content large  ').text
- 
-        try:
-            price = item.select_one('.elements-offer-price-normal__promotion').text.split(' ')[0]
-        except:
-            reviews = None
-   

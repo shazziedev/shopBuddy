@@ -20,17 +20,40 @@
         {% for r in res %}
             <div class="d-flex justify-content-evenly border-bottom py-4">
                 <div class="img col-2">
-                    <img src="{{r.item.img_url}}" class="img-thumbnail" alt="...">
+                    <img src="{{r.img_url}}" class="img-thumbnail" alt="...">
                 </div>
                 <div class="info col-6">
-                    <div class="h4">{{r.item.title}}</div>
-                    <div class="title">{{r.item.price}}</div>
+                    <div class="h4">{{r.title}}</div>
+                    <div class="title">{{r.price}}</div>
                     <div class="title">{{r.delivery.shipping}}</div>
                     <div class="title">{{r.delivery.location}}</div>
                 </div>
                 <div class="controls col-1">
                     <div class="row mb-2">
-                        <a href="{{r.item.link}}" target="_blank" class="btn btn-primary">Buy</a>
+                        <a href="{{r.link}}" target="_blank" class="btn btn-primary">Buy</a>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-outline-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor  %}
+        {% endif  %}
+        {% if ress %}
+        {% for r in ress %}
+            <div class="d-flex justify-content-evenly border-bottom py-4">
+                <div class="img col-2">
+                    <img src="{{r.img_url}}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="info col-6">
+                    <div class="h4">{{r.title}}</div>
+                    <div class="title">{{r.price}}</div>
+                    <div class="title">{{r.delivery.shipping}}</div>
+                    <div class="title">{{r.delivery.location}}</div>
+                </div>
+                <div class="controls col-1">
+                    <div class="row mb-2">
+                        <a href="{{r.link}}" target="_blank" class="btn btn-primary">Buy</a>
                     </div>
                     <div class="row">
                         <button class="btn btn-outline-primary">Save</button>

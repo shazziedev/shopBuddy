@@ -15,13 +15,10 @@ def get_amasample(string):
             slug = '-'.join(kwrds)
             data.append({
                 'digit_price':price,
-                'item': {
-                    'title':item['name'] , 
-                    'link': f'http://amasample.herokuapp.com/products/{slug}/{item["id"]}/', 
-                    'price': f"${price}",
-                    'img_url':item['thumb'],
-                    
-                },
+                'title':item['name'] , 
+                'link': f'http://amasample.herokuapp.com/products/{slug}/{item["id"]}/', 
+                'price': f"${price}",
+                'img_url':item['thumb'],
                 'condition': None,
                 'top_rated': None,
                 'reviews': None,
@@ -30,6 +27,6 @@ def get_amasample(string):
                 'delivery': {'shipping': None, 'location': item['location']},
                 'bids': {'count': None, 'time_left': None},
             })
-
     data.sort(key=lambda x: x["digit_price"])
-    return  data[1:] 
+    return  data 
+
