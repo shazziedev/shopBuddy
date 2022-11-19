@@ -10,12 +10,8 @@
             <div class="display-6 ">Search results</div>
         </div>
         
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{url_for('index')}}" style="text-decoration: none;">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Search Results</li>
-            </ol>
-          </nav>
+        {% include 'nav.html' %}
+
         {% if res %}
         {% for r in res %}
             <div class="d-flex justify-content-evenly border-bottom py-4">
@@ -25,15 +21,15 @@
                 <div class="info col-6">
                     <div class="h4">{{r.title}}</div>
                     <div class="title">{{r.price}}</div>
-                    <div class="title">{{r.delivery.shipping}}</div>
-                    <div class="title">{{r.delivery.location}}</div>
+                    <div class="title">{{r.shipping}}</div>
+                    <div class="title">{{r.location}}</div>
                 </div>
                 <div class="controls col-1">
                     <div class="row mb-2">
                         <a href="{{r.link}}" target="_blank" class="btn btn-primary">Buy</a>
                     </div>
                     <div class="row">
-                        <button class="btn btn-outline-primary">Save</button>
+                        <a class="btn btn-outline-success" href="ebay/save/{{r.title}}/{{r.price}}" >Save</a>
                     </div>
                 </div>
             </div>
@@ -48,15 +44,15 @@
                 <div class="info col-6">
                     <div class="h4">{{r.title}}</div>
                     <div class="title">{{r.price}}</div>
-                    <div class="title">{{r.delivery.shipping}}</div>
-                    <div class="title">{{r.delivery.location}}</div>
+                    <div class="title">{{r.shipping}}</div>
+                    <div class="title">{{r.location}}</div>
                 </div>
                 <div class="controls col-1">
                     <div class="row mb-2">
                         <a href="{{r.link}}" target="_blank" class="btn btn-primary">Buy</a>
                     </div>
                     <div class="row">
-                        <button class="btn btn-outline-primary">Save</button>
+                        <a  class="btn btn-outline-success" href='save/{{r.title}}' >Save</a>
                     </div>
                 </div>
             </div>

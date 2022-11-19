@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    ShopBuddy | Results
+{% endblock title %}
+
+
+{% block body %}
+    <div class="container m-5">
+        <div class="d-flex justify-content-center mb-5">
+            <div class="display-6 ">Saved Product</div>
+        </div>
+        
+        {% include 'nav.html' %}
+
+        {% if res %}
+        {% for r in res %}
+            <div class="d-flex justify-content-evenly border-bottom py-4">
+                <div class="img col-2">
+                    <img src="{{r.img}}" class="img-thumbnail" alt="...">
+                </div>
+                <div class="info col-6">
+                    <div class="h4">{{r.productName}}</div>
+                    <div class="title">{{r.price}}</div>
+                    <div class="title">{{r.location}}</div>
+                    <div class="title">{{r.shipping}}</div>
+                    <div class="title">saved: {{r.date}}</div>
+                </div>
+                <div class="controls col-1">
+                    <div class="row mb-2">
+                        <a href="{{r.link}}" target="_blank" class="btn btn-primary">Buy</a>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor  %}
+        {% endif %}
+
+    </div> 
+
+{% endblock body %}
+

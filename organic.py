@@ -15,7 +15,7 @@ list_price = []
 def get_on_ebay(string):
     html = requests.get(f'https://www.ebay.com/sch/i.html?_nkw={string}', headers=headers).text
     soup = BeautifulSoup(html, 'lxml')
-    print(html)
+    
     data = []
 
     for item in soup.select('.s-item__wrapper.clearfix'):
@@ -92,7 +92,8 @@ def get_on_ebay(string):
             'reviews': reviews,
             'watchers_or_sold': watchers_sold,
             'buy_now_extention': exctention_buy_now,
-            'delivery': {'shipping': shipping, 'location': location},
+            'shipping': shipping, 
+            'location': location,
             'bids': {'count': bid_count, 'time_left': bid_time_left},
         })
     # sorting algorithm here

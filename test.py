@@ -24,7 +24,8 @@ def get_amasample(string):
                 'reviews': None,
                 'watchers_or_sold': None,
                 'buy_now_extention': None,
-                'delivery': {'shipping': None, 'location': item['location']},
+                'shipping': None, 
+                'location': item['location'],
                 'bids': {'count': None, 'time_left': None},
             })
     data.sort(key=lambda x: x["digit_price"])
